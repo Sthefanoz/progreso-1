@@ -57,7 +57,10 @@
 
     <!-- Sobre Duolingo -->
     <section class="seccion">
-      <img class="seccion__imagen" src="assets/img/duo.svg" alt="Duo, la mascota de Duolingo">
+      <!-- Al hacer clic se abre el lightbox (#lightbox-duo) -->
+      <a href="#lightbox-duo" class="seccion__ampliar" aria-label="Ver a Duo en grande">
+        <img class="seccion__imagen" src="assets/img/duo.svg" alt="Duo, la mascota de Duolingo">
+      </a>
       <div class="seccion__contenido">
         <h2 class="titulo">The world’s #1 way to learn a language</h2>
         <p class="texto">Learning with Duolingo is fun, and research shows that it works! With quick, bite-sized lessons, you’ll earn points and unlock new levels while gaining real-world communication skills.</p>
@@ -268,6 +271,16 @@
 
     </div>
   </footer>
+
+  <!-- ===================== LIGHTBOX (solo CSS, con :target) ===================== -->
+  <div id="lightbox-duo" class="lightbox">
+    <!-- Fondo oscuro: al hacer clic se cierra -->
+    <a href="#cerrar" class="lightbox__fondo" aria-label="Cerrar"></a>
+    <div class="lightbox__contenido">
+      <img class="lightbox__imagen" src="assets/img/duo.svg" alt="Duo, la mascota de Duolingo">
+      <a href="#cerrar" class="lightbox__cerrar" aria-label="Cerrar"><i class="bi bi-x-lg"></i></a>
+    </div>
+  </div>
 
 </body>
 </html>

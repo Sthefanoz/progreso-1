@@ -1,0 +1,76 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Lightbox (solo CSS3, sin JavaScript)           */
+/* Se abre con la pseudo-clase :target cuando la URL          */
+/* termina en #lightbox-duo, y se cierra al ir a #cerrar      */
+/* ========================================================== */
+.lightbox {
+  /* Ocupa toda la pantalla, encima de todo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  @include flex(row, center, center);
+  background-color: rgba(0, 0, 0, 0.8);
+
+  /* Escondido por defecto */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &:target {
+    /* Visible cuando la URL apunta a su id */
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__fondo {
+    /* Capa invisible que cubre la pantalla: clic afuera = cerrar */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: zoom-out;
+  }
+
+  &__contenido {
+    /* Recuadro blanco con la imagen grande */
+    position: relative;
+    padding: $espacio-lg;
+    border-radius: $radio;
+    background-color: $color-blanco;
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+  }
+
+  &:target &__contenido {
+    /* Al abrirse, el recuadro "crece" hasta su tamaño normal */
+    transform: scale(1);
+  }
+
+  &__imagen {
+    width: 16rem;
+
+    @include mq($bp-md) {
+      width: 25rem;
+    }
+  }
+
+  &__cerrar {
+    /* Botón redondo verde con la X */
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    @include flex(row, center, center);
+    border-radius: 50%;
+    @include boton-3d($color-verde, $color-verde-oscuro);
+    color: $color-blanco;
+  }
+}

@@ -32,10 +32,28 @@
   }
 }
 
-// Botón con efecto 3D 
+// Botón con efecto 3D
 @mixin boton-3d($fondo, $sombra) {
   background-color: $fondo;
   box-shadow: 0 4px 0 $sombra;
+}
+
+// Sección de imagen + texto en 2 columnas (desde tablet)
+// $ancho-imagen: ancho de la columna de la imagen
+// $lado: izquierda o derecha (dónde va la imagen)
+// Uso: @include imagen-texto(15.3rem, derecha);
+@mixin imagen-texto($ancho-imagen: 11.5rem, $lado: izquierda) {
+  @include mq($bp-md) {
+    @if $lado == derecha {
+      grid-template-columns: 1fr $ancho-imagen;   // texto | imagen
+
+      > img {
+        order: 2;                                  // la imagen pasa a la derecha
+      }
+    } @else {
+      grid-template-columns: $ancho-imagen 1fr;   // imagen | texto
+    }
+  }
 }
 
 

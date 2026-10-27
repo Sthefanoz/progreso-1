@@ -3,33 +3,39 @@
 
 /* ========================================================== */
 /* Componente: Beneficios ("Why you'll love learning...") */
-/* Desktop: 3 columnas con CSS Grid (beneficios | portátil | beneficios) */
+/* Flexbox: columna en móvil, fila en desktop (beneficios | portátil | beneficios) */
 /* ========================================================== */
 .beneficios {
   padding: $espacio-lg 0;
   border-bottom: 2px solid $color-linea;
 
   &__cuadricula {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: $espacio-lg;
+    /* Móvil: todo en columna, centrado */
+    @include flex(column, flex-start, center, $espacio-lg);
     margin-top: $espacio-lg;
 
     @include mq($bp-lg) {
-      grid-template-columns: 1fr 15.3rem 1fr;
-      align-items: center;
+      /* Desktop: las 3 partes en una sola fila */
+      flex-direction: row;
+      justify-content: space-between;
       gap: $espacio-xl;
     }
   }
 
   &__columna {
     @include flex(column, flex-start, stretch, $espacio-lg);
+    width: 100%;
     max-width: 22rem;
+
+    @include mq($bp-lg) {
+      /* Las 2 columnas de texto se reparten el espacio por igual */
+      flex: 1;
+    }
   }
 
   &__ilustracion {
     width: 15.3rem;               /* 245px */
+    flex-shrink: 0;               /* la portátil no se achica */
   }
 }
 

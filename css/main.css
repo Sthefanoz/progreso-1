@@ -64,7 +64,7 @@ button {
   }
 }
 
-/* Enlaces celestes en mayúsculas ("LEARN MORE ABOUT...") */
+/* Enlaces celestes en mayúsculas */
 .enlace {
   font-size: 0.8125rem;
   font-weight: 700;
@@ -231,12 +231,12 @@ button {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.25;
-  color: #f80606;
+  color: #ff4b4b; /* móvil y tablet: rojo */
 }
 @media (min-width: 1024px) {
   .portada__titulo {
     font-size: 2rem; /* 32px */
-    color: #ffffff;
+    color: #ffffff; /* desktop (desde 1024px): blanco */
   }
 }
 
@@ -335,10 +335,15 @@ button {
   padding: 2.5rem 0;
   border-bottom: 2px solid #e5e5e5;
   text-align: center;
+  /* Imagen (184px) a la izquierda y texto a la derecha */
 }
 @media (min-width: 768px) {
   .seccion {
-    grid-template-columns: 11.5rem 1fr; /* imagen | texto */
+    grid-template-columns: 11.5rem 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .seccion {
     align-items: center;
     justify-items: start;
     gap: 3rem;
@@ -352,55 +357,27 @@ button {
 }
 @media (min-width: 768px) {
   .seccion--invertida {
-    /* Imagen a la derecha en vez de a la izquierda */
     grid-template-columns: 1fr 11.5rem;
   }
-  .seccion--invertida .seccion__imagen {
+  .seccion--invertida > img {
     order: 2;
   }
 }
+.seccion__ampliar {
+  /* Enlace que abre el lightbox: muestra una lupa al pasar el mouse */
+  display: block;
+  cursor: zoom-in;
+}
 .seccion__imagen {
-   justify-content: center;
-    align-items: center;
-    display:flex;
-    padding-top:20%;  
-        
+  width: 10rem;
 }
-
-
-
-
-/* Small screens: arrows move below the image */
-@media (max-width: 40rem) {
-  .ui-lightbox {
-    padding: 4rem 1rem 6rem;
-  }
-  .ui-lightbox__prev,
-  .ui-lightbox__next {
-    top: auto;
-    bottom: 1.5rem;
-    translate: none;
-  }
-  .ui-lightbox__prev { left: calc(50% - 3.5rem); }
-  .ui-lightbox__next { right: calc(50% - 3.5rem); }
-}
-
-/* No page scrolling behind an open image */
-html:has(.ui-lightbox:target) {
-  overflow: hidden;
-}
-
-
-
 @media (min-width: 768px) {
   .seccion__imagen {
     width: 100%;
-    
   }
 }
 @media (min-width: 768px) {
   .seccion--imagen-ancha {
-    /* Imagen más ancha (245px en el Figma) */
     grid-template-columns: 15.3rem 1fr;
   }
 }
@@ -415,6 +392,9 @@ html:has(.ui-lightbox:target) {
 @media (min-width: 768px) {
   .seccion--imagen-ancha.seccion--invertida {
     grid-template-columns: 1fr 15.3rem;
+  }
+  .seccion--imagen-ancha.seccion--invertida > img {
+    order: 2;
   }
 }
 .seccion__contenido {
@@ -432,25 +412,26 @@ html:has(.ui-lightbox:target) {
 
 /* ========================================================== */
 /* Componente: Beneficios ("Why you'll love learning...") */
-/* Desktop: 3 columnas con CSS Grid (beneficios | portátil | beneficios) */
+/* Flexbox: columna en móvil, fila en desktop (beneficios | portátil | beneficios) */
 /* ========================================================== */
 .beneficios {
   padding: 2.5rem 0;
   border-bottom: 2px solid #e5e5e5;
 }
 .beneficios__cuadricula {
- display: flex;
-  flex-direction: row;
-  justify-content: center;
+  /* Móvil: todo en columna, centrado */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
 }
 @media (min-width: 1024px) {
   .beneficios__cuadricula {
-    grid-template-columns: 1fr 15.3rem 1fr;
-    align-items: center;
+    /* Desktop: las 3 partes en una sola fila */
+    flex-direction: row;
+    justify-content: space-between;
     gap: 3rem;
   }
 }
@@ -460,10 +441,18 @@ html:has(.ui-lightbox:target) {
   justify-content: flex-start;
   align-items: stretch;
   gap: 2.5rem;
+  width: 100%;
   max-width: 22rem;
+}
+@media (min-width: 1024px) {
+  .beneficios__columna {
+    /* Las 2 columnas de texto se reparten el espacio por igual */
+    flex: 1;
+  }
 }
 .beneficios__ilustracion {
   width: 15.3rem; /* 245px */
+  flex-shrink: 0; /* la portátil no se achica */
 }
 
 .beneficio {
@@ -640,4 +629,81 @@ html:has(.ui-lightbox:target) {
   gap: 0.25rem 1.5rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
+}
+
+/* ========================================================== */
+/* Componente: Lightbox (solo CSS3, sin JavaScript)           */
+/* Se abre con la pseudo-clase :target cuando la URL          */
+/* termina en #lightbox-duo, y se cierra al ir a #cerrar      */
+/* ========================================================== */
+.lightbox {
+  /* Ocupa toda la pantalla, encima de todo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Escondido por defecto */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.lightbox:target {
+  /* Visible cuando la URL apunta a su id */
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox__fondo {
+  /* Capa invisible que cubre la pantalla: clic afuera = cerrar */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-out;
+}
+.lightbox__contenido {
+  /* Recuadro blanco con la imagen grande */
+  position: relative;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+}
+.lightbox:target .lightbox__contenido {
+  /* Al abrirse, el recuadro "crece" hasta su tamaño normal */
+  transform: scale(1);
+}
+.lightbox__imagen {
+  width: 16rem;
+}
+@media (min-width: 768px) {
+  .lightbox__imagen {
+    width: 25rem;
+  }
+}
+.lightbox__cerrar {
+  /* Botón redondo verde con la X */
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  border-radius: 50%;
+  background-color: #58cc02;
+  box-shadow: 0 4px 0 #58a700;
+  color: #ffffff;
 }
