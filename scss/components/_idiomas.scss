@@ -1,0 +1,54 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Barra de idiomas (banderas) */
+/* ========================================================== */
+.idiomas {
+  background-color: $color-azul-oscuro;
+  color: $color-blanco;
+
+  &__interior {
+    @include contenedor;
+    @include flex(row, space-between, center, $espacio-md);
+    min-height: 4.625rem;         /* 74px */
+    max-width: 70rem;
+  }
+
+  &__flecha {
+    /* Las flechas solo se ven en desktop */
+    display: none;
+    font-size: 1.25rem;
+
+    @include mq($bp-lg) {
+      display: block;
+    }
+  }
+
+  &__lista {
+    @include flex(row, center, center, $espacio-sm $espacio-md);
+    flex-wrap: wrap;
+    flex: 1;
+    padding: $espacio-sm 0;
+
+    @include mq($bp-xl) {
+      /* En pantallas grandes todos los idiomas en una sola fila */
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 1.25rem;
+    }
+  }
+
+  &__idioma {
+    @include flex(row, flex-start, center, 0.625rem);
+    font-size: 0.8125rem;
+    font-weight: $peso-negrita;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__bandera {
+    width: 2.25rem;               /* 36px */
+    border-radius: 4px;
+  }
+}

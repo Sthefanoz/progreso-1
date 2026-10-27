@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Cabecera (logo + idioma del sitio) */
+/* ========================================================== */
+.cabecera {
+  background-color: $color-azul;
+
+  &__interior {
+    @include contenedor;
+    @include flex(row, space-between, center);
+    height: 4.375rem;             /* 70px */
+  }
+
+  &__logo {
+    width: 7.5rem;
+
+    @include mq($bp-md) {
+      width: 9.625rem;            /* 154px */
+    }
+  }
+
+  &__idioma {
+    @include flex(row, flex-start, center, $espacio-xs);
+    font-size: 0.8125rem;
+    font-weight: $peso-negrita;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $color-blanco;
+  }
+
+  &__etiqueta {
+    /* "Site language:" solo se ve desde tablet */
+    display: none;
+
+    @include mq($bp-md) {
+      display: inline;
+    }
+  }
+}

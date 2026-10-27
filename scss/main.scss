@@ -1,0 +1,18 @@
+// ==========================================================
+// Duolingo — Página de inicio (Examen Ingeniería Web)
+// Estructura: abstracts (herramientas) / base / components (componentes)
+// ==========================================================
+
+// Estilos base
+@use 'base/reset';
+@use 'base/tipografia';
+
+// Componentes (en el orden en que aparecen en la página)
+@use 'components/boton';
+@use 'components/cabecera';
+@use 'components/portada';
+@use 'components/idiomas';
+@use 'components/seccion';
+@use 'components/beneficios';
+@use 'components/tiendas';
+@use 'components/pie';

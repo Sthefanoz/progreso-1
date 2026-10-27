@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+// ==========================================================
+// Mixins
+// ==========================================================
+
+// Media query (primero móvil). Uso: @include mq($bp-md) { ... }
+@mixin mq($ancho) {
+  @media (min-width: $ancho) {
+    @content;
+  }
+}
+
+// Atajo para Flexbox
+@mixin flex($direccion: row, $justificar: flex-start, $alinear: stretch, $espacio: 0) {
+  display: flex;
+  flex-direction: $direccion;
+  justify-content: $justificar;
+  align-items: $alinear;
+  gap: $espacio;
+}
+
+// Contenedor centrado con márgenes laterales
+@mixin contenedor {
+  width: 100%;
+  max-width: $ancho-contenedor;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+
+  @include mq($bp-md) {
+    padding: 0 $espacio-lg;
+  }
+}
+
+// Botón con efecto 3D 
+@mixin boton-3d($fondo, $sombra) {
+  background-color: $fondo;
+  box-shadow: 0 4px 0 $sombra;
+}
+
+

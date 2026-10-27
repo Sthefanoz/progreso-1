@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* Títulos de cada sección (21px en el Figma) */
+.titulo {
+  font-size: 1.25rem;
+  font-weight: $peso-negrita;
+  line-height: 1.25;
+  color: $color-titulo;
+
+  @include mq($bp-lg) {
+    font-size: 1.375rem;
+  }
+
+  &--centrado {
+    text-align: center;
+  }
+}
+
+/* Párrafos (17px en el Figma) */
+.texto {
+  font-size: 1rem;
+  line-height: 1.5;
+
+  @include mq($bp-lg) {
+    font-size: 1.0625rem;
+  }
+}
+
+/* Enlaces celestes en mayúsculas */
+.enlace {
+  font-size: 0.8125rem;
+  font-weight: $peso-negrita;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-celeste;
+}

@@ -1,0 +1,643 @@
+@charset "UTF-8";
+/* Quita márgenes y paddings que trae el navegador por defecto */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #777777;
+  background-color: #ffffff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer; /* muestra la manito aunque el enlace no tenga href */
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Títulos de cada sección (21px en el Figma) */
+.titulo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #3c3c3c;
+}
+@media (min-width: 1024px) {
+  .titulo {
+    font-size: 1.375rem;
+  }
+}
+.titulo--centrado {
+  text-align: center;
+}
+
+/* Párrafos (17px en el Figma) */
+.texto {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+@media (min-width: 1024px) {
+  .texto {
+    font-size: 1.0625rem;
+  }
+}
+
+/* Enlaces celestes en mayúsculas ("LEARN MORE ABOUT...") */
+.enlace {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #1cb0f6;
+}
+
+/* ========================================================== */
+/* Componente: Botón */
+/* ========================================================== */
+.boton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: 20rem; /* 320px */
+  padding: 0.8rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.boton--principal {
+  /* Verde: "Get started" */
+  background-color: #58cc02;
+  box-shadow: 0 4px 0 #58a700;
+}
+.boton--secundario {
+  /* Azul con borde: "I already have an account" */
+  background-color: #235390;
+  box-shadow: 0 4px 0 #042c60;
+  border-color: #042c60;
+}
+.boton--auto {
+  /* Botón más angosto (el del pie de página) */
+  width: auto;
+}
+
+/* ========================================================== */
+/* Componente: Cabecera (logo + idioma del sitio) */
+/* ========================================================== */
+.cabecera {
+  background-color: #235390;
+}
+.cabecera__interior {
+  width: 100%;
+  max-width: 66.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .cabecera__interior {
+    padding: 0 2.5rem;
+  }
+}
+.cabecera__interior {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  height: 4.375rem; /* 70px */
+}
+.cabecera__logo {
+  width: 7.5rem;
+}
+@media (min-width: 768px) {
+  .cabecera__logo {
+    width: 9.625rem; /* 154px */
+  }
+}
+.cabecera__idioma {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.cabecera__etiqueta {
+  /* "Site language:" solo se ve desde tablet */
+  display: none;
+}
+@media (min-width: 768px) {
+  .cabecera__etiqueta {
+    display: inline;
+  }
+}
+
+/* ========================================================== */
+/* Componente: Portada (planeta + llamado a la acción) */
+/* ========================================================== */
+.portada {
+  padding: 3rem 0;
+  background-color: #235390;
+  background-image: url("../assets/img/estrellas.svg");
+  background-size: cover;
+  background-position: center;
+}
+@media (min-width: 1024px) {
+  .portada {
+    padding: 8rem 0;
+  }
+}
+.portada__interior {
+  width: 100%;
+  max-width: 66.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .portada__interior {
+    padding: 0 2.5rem;
+  }
+}
+.portada__interior {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+@media (min-width: 1024px) {
+  .portada__interior {
+    flex-direction: row;
+    gap: 3rem;
+    max-width: 72rem;
+  }
+}
+.portada__planeta {
+  width: 15rem;
+}
+@media (min-width: 1024px) {
+  .portada__planeta {
+    width: 22.5rem; /* 360px */
+  }
+}
+.portada__llamado {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .portada__llamado {
+    flex: 1;
+  }
+}
+.portada__titulo {
+  max-width: 36.625rem; /* 586px */
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #f80606;
+}
+@media (min-width: 1024px) {
+  .portada__titulo {
+    font-size: 2rem; /* 32px */
+    color: #ffffff;
+  }
+}
+
+/* ========================================================== */
+/* Componente: Barra de idiomas (banderas) */
+/* ========================================================== */
+.idiomas {
+  background-color: #0a4a82;
+  color: #ffffff;
+}
+.idiomas__interior {
+  width: 100%;
+  max-width: 66.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .idiomas__interior {
+    padding: 0 2.5rem;
+  }
+}
+.idiomas__interior {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 4.625rem; /* 74px */
+  max-width: 70rem;
+}
+.idiomas__flecha {
+  /* Las flechas solo se ven en desktop */
+  display: none;
+  font-size: 1.25rem;
+}
+@media (min-width: 1024px) {
+  .idiomas__flecha {
+    display: block;
+  }
+}
+.idiomas__lista {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+  flex: 1;
+  padding: 1rem 0;
+}
+@media (min-width: 1200px) {
+  .idiomas__lista {
+    /* En pantallas grandes todos los idiomas en una sola fila */
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+}
+.idiomas__idioma {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.idiomas__bandera {
+  width: 2.25rem; /* 36px */
+  border-radius: 4px;
+}
+
+/* ========================================================== */
+/* Componente: Sección (imagen + texto) — CSS Grid */
+/* Se usa para "About", "Super", "Apps", "Schools", etc. */
+/* ========================================================== */
+.secciones {
+  width: 100%;
+  max-width: 66.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .secciones {
+    padding: 0 2.5rem;
+  }
+}
+
+.seccion {
+  display: grid;
+  grid-template-columns: 1fr; /* móvil: una columna */
+  justify-items: center;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 2px solid #e5e5e5;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .seccion {
+    grid-template-columns: 11.5rem 1fr; /* imagen | texto */
+    align-items: center;
+    justify-items: start;
+    gap: 3rem;
+    padding: 2.5rem;
+    text-align: left;
+  }
+}
+.seccion:last-child {
+  /* La última sección no lleva línea abajo */
+  border-bottom: none;
+}
+@media (min-width: 768px) {
+  .seccion--invertida {
+    /* Imagen a la derecha en vez de a la izquierda */
+    grid-template-columns: 1fr 11.5rem;
+  }
+  .seccion--invertida .seccion__imagen {
+    order: 2;
+  }
+}
+.seccion__imagen {
+   justify-content: center;
+    align-items: center;
+    display:flex;
+    padding-top:20%;  
+        
+}
+
+
+
+
+/* Small screens: arrows move below the image */
+@media (max-width: 40rem) {
+  .ui-lightbox {
+    padding: 4rem 1rem 6rem;
+  }
+  .ui-lightbox__prev,
+  .ui-lightbox__next {
+    top: auto;
+    bottom: 1.5rem;
+    translate: none;
+  }
+  .ui-lightbox__prev { left: calc(50% - 3.5rem); }
+  .ui-lightbox__next { right: calc(50% - 3.5rem); }
+}
+
+/* No page scrolling behind an open image */
+html:has(.ui-lightbox:target) {
+  overflow: hidden;
+}
+
+
+
+@media (min-width: 768px) {
+  .seccion__imagen {
+    width: 100%;
+    
+  }
+}
+@media (min-width: 768px) {
+  .seccion--imagen-ancha {
+    /* Imagen más ancha (245px en el Figma) */
+    grid-template-columns: 15.3rem 1fr;
+  }
+}
+.seccion--imagen-ancha .seccion__imagen {
+  width: 13rem;
+}
+@media (min-width: 768px) {
+  .seccion--imagen-ancha .seccion__imagen {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .seccion--imagen-ancha.seccion--invertida {
+    grid-template-columns: 1fr 15.3rem;
+  }
+}
+.seccion__contenido {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .seccion__contenido {
+    align-items: flex-start;
+  }
+}
+
+/* ========================================================== */
+/* Componente: Beneficios ("Why you'll love learning...") */
+/* Desktop: 3 columnas con CSS Grid (beneficios | portátil | beneficios) */
+/* ========================================================== */
+.beneficios {
+  padding: 2.5rem 0;
+  border-bottom: 2px solid #e5e5e5;
+}
+.beneficios__cuadricula {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+@media (min-width: 1024px) {
+  .beneficios__cuadricula {
+    grid-template-columns: 1fr 15.3rem 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+.beneficios__columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 2.5rem;
+  max-width: 22rem;
+}
+.beneficios__ilustracion {
+  width: 15.3rem; /* 245px */
+}
+
+.beneficio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.beneficio__icono {
+  width: 2.7rem; /* 43px */
+  flex-shrink: 0;
+}
+.beneficio__titulo {
+  margin-bottom: 0.25rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #3c3c3c;
+}
+.beneficio__texto {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ========================================================== */
+/* Componente: Botones de App Store y Google Play */
+/* ========================================================== */
+.tiendas {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+@media (min-width: 768px) {
+  .tiendas {
+    justify-content: flex-start;
+  }
+}
+
+.tienda {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.75rem;
+  width: 12rem; /* 192px */
+  padding: 0.6rem 1.5rem;
+  border: 2px solid #e5e5e5;
+  border-radius: 1rem;
+  box-shadow: 0 2px 0 #e5e5e5;
+  color: #4b4b4b;
+  text-align: left;
+}
+.tienda__icono {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+.tienda__texto {
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 700;
+  line-height: 1.4;
+}
+.tienda__nombre {
+  display: block;
+  font-size: 0.875rem; /* 14px */
+}
+
+/* ========================================================== */
+/* Componente: Pie de página */
+/* ========================================================== */
+.pie {
+  padding: 5rem 0 3rem;
+  background-color: #235390;
+  background-image: url("../assets/img/estrellas-pie.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  color: #ffffff;
+}
+.pie__interior {
+  width: 100%;
+  max-width: 66.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+@media (min-width: 768px) {
+  .pie__interior {
+    padding: 0 2.5rem;
+  }
+}
+.pie__llamado {
+  /* --- Llamado a la acción --- */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .pie__llamado {
+    flex-direction: row;
+    gap: 3rem;
+  }
+}
+.pie__titulo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+@media (min-width: 1024px) {
+  .pie__titulo {
+    font-size: 1.8rem; /* 29px */
+  }
+}
+.pie__mapa {
+  /* --- Mapa del sitio: CSS Grid --- */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 1.5rem;
+  padding: 1.5rem 0;
+}
+@media (min-width: 768px) {
+  .pie__mapa {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1.5rem 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .pie__mapa {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.pie__columna {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.pie__subtitulo {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.pie__subtitulo--separado {
+  margin-top: 1.5rem;
+}
+.pie__enlace {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.6;
+  opacity: 0.5;
+}
+.pie__idiomas {
+  /* --- Idiomas del sitio --- */
+  margin-top: 2.5rem;
+  padding: 1.5rem 0 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+@media (min-width: 768px) {
+  .pie__idiomas {
+    padding: 1.5rem 2.5rem 0;
+  }
+}
+.pie__lista-idiomas {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.25rem 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}

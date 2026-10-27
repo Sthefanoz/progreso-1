@@ -1,0 +1,84 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Sección (imagen + texto) — CSS Grid */
+/* Se usa para "About", "Super", "Apps", "Schools", etc. */
+/* ========================================================== */
+.secciones {
+  @include contenedor;
+}
+
+.seccion {
+  display: grid;
+  grid-template-columns: 1fr;     /* móvil: una columna */
+  justify-items: center;
+  gap: $espacio-md;
+  padding: $espacio-lg 0;
+  border-bottom: 2px solid $color-linea;
+  text-align: center;
+
+  @include mq($bp-md) {
+    grid-template-columns: 11.5rem 1fr;   /* imagen | texto */
+    align-items: center;
+    justify-items: start;
+    gap: $espacio-xl;
+    padding: $espacio-lg;
+    text-align: left;
+  }
+
+  &:last-child {
+    /* La última sección no lleva línea abajo */
+    border-bottom: none;
+  }
+
+  &--invertida {
+    @include mq($bp-md) {
+      /* Imagen a la derecha en vez de a la izquierda */
+      grid-template-columns: 1fr 11.5rem;
+
+      .seccion__imagen {
+        order: 2;
+        
+      }
+    }
+  }
+
+  &__imagen {
+    width: 10rem;
+    
+
+    @include mq($bp-md) {
+      width: 100%;
+    }
+  }
+
+  &--imagen-ancha {
+    @include mq($bp-md) {
+      /* Imagen más ancha (245px en el Figma) */
+      grid-template-columns: 15.3rem 1fr;
+    }
+
+    .seccion__imagen {
+      width: 13rem;
+
+      @include mq($bp-md) {
+        width: 100%;
+      }
+    }
+  }
+
+  &--imagen-ancha.seccion--invertida {
+    @include mq($bp-md) {
+      grid-template-columns: 1fr 15.3rem;
+    }
+  }
+
+  &__contenido {
+    @include flex(column, flex-start, center, $espacio-sm);
+
+    @include mq($bp-md) {
+      align-items: flex-start;
+    }
+  }
+}

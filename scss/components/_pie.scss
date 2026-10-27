@@ -1,0 +1,95 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Pie de página */
+/* ========================================================== */
+.pie {
+  padding: $espacio-2xl 0 $espacio-xl;
+  background-color: $color-azul;
+  background-image: url('../assets/img/estrellas-pie.svg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  color: $color-blanco;
+
+  &__interior {
+    @include contenedor;
+  }
+
+  &__llamado {
+    /* --- Llamado a la acción --- */
+    @include flex(column, center, center, $espacio-md);
+    margin-bottom: $espacio-xl;
+    text-align: center;
+
+    @include mq($bp-md) {
+      flex-direction: row;
+      gap: $espacio-xl;
+    }
+  }
+
+  &__titulo {
+    font-size: 1.5rem;
+    font-weight: $peso-negrita;
+    line-height: 1.3;
+
+    @include mq($bp-lg) {
+      font-size: 1.8rem;          /* 29px */
+    }
+  }
+
+  &__mapa {
+    /* --- Mapa del sitio: CSS Grid --- */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $espacio-lg $espacio-md;
+    padding: $espacio-md 0;
+
+    @include mq($bp-md) {
+      grid-template-columns: repeat(3, 1fr);
+      padding: $espacio-md $espacio-lg;
+    }
+
+    @include mq($bp-lg) {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  &__columna {
+    @include flex(column, flex-start, flex-start, $espacio-xs);
+  }
+
+  &__subtitulo {
+    margin-bottom: $espacio-xs;
+    font-size: 1rem;
+    font-weight: $peso-negrita;
+  }
+
+  &__subtitulo--separado {
+    margin-top: $espacio-md;
+  }
+
+  &__enlace {
+    font-size: 0.8125rem;
+    font-weight: $peso-negrita;
+    line-height: 1.6;
+    opacity: 0.5;
+  }
+
+  &__idiomas {
+    /* --- Idiomas del sitio --- */
+    margin-top: $espacio-lg;
+    padding: $espacio-md 0 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+
+    @include mq($bp-md) {
+      padding: $espacio-md $espacio-lg 0;
+    }
+  }
+
+  &__lista-idiomas {
+    @include flex(row, flex-start, center, 0.25rem $espacio-md);
+    flex-wrap: wrap;
+    margin-top: $espacio-xs;
+  }
+}

@@ -1,0 +1,39 @@
+@use '../abstracts/variables' as *;
+
+/* Quita márgenes y paddings que trae el navegador por defecto */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $fuente;
+  font-weight: $peso-medio;
+  line-height: 1.5;
+  color: $color-texto;
+  background-color: $color-blanco;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;          /* muestra la manito aunque el enlace no tenga href */
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

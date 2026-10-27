@@ -1,0 +1,42 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Botones de App Store y Google Play */
+/* ========================================================== */
+.tiendas {
+  @include flex(row, center, center, 0.75rem);
+  flex-wrap: wrap;
+  margin-top: $espacio-xs;
+
+  @include mq($bp-md) {
+    justify-content: flex-start;
+  }
+}
+
+.tienda {
+  @include flex(row, flex-start, center, 0.75rem);
+  width: 12rem;                   /* 192px */
+  padding: 0.6rem 1.5rem;
+  border: 2px solid $color-linea;
+  border-radius: $radio;
+  box-shadow: 0 2px 0 $color-linea;
+  color: $color-gris-oscuro;
+  text-align: left;
+
+  &__icono {
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+
+  &__texto {
+    font-size: 0.6875rem;         /* 11px */
+    font-weight: $peso-negrita;
+    line-height: 1.4;
+  }
+
+  &__nombre {
+    display: block;
+    font-size: 0.875rem;          /* 14px */
+  }
+}

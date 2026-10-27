@@ -1,0 +1,58 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Portada (planeta + llamado a la acción) */
+/* ========================================================== */
+.portada {
+  padding: $espacio-xl 0;
+  background-color: $color-azul;
+  background-image: url('../assets/img/estrellas.svg');
+  background-size: cover;
+  background-position: center;
+
+  @include mq($bp-lg) {
+    padding: 8rem 0;
+  }
+
+  &__interior {
+    @include contenedor;
+    @include flex(column, center, center, $espacio-lg);
+
+    @include mq($bp-lg) {
+      flex-direction: row;
+      gap: $espacio-xl;
+      max-width: 72rem;
+    }
+  }
+
+  &__planeta {
+    width: 15rem;
+
+    @include mq($bp-lg) {
+      width: 22.5rem;             /* 360px */
+    }
+  }
+
+  &__llamado {
+    @include flex(column, flex-start, center, $espacio-sm);
+    text-align: center;
+
+    @include mq($bp-lg) {
+      flex: 1;
+    }
+  }
+
+  &__titulo {
+    max-width: 36.625rem;         /* 586px */
+    margin-bottom: $espacio-md;
+    font-size: 1.5rem;
+    font-weight: $peso-negrita;
+    line-height: 1.25;
+    color: $color-blanco;
+
+    @include mq($bp-lg) {
+      font-size: 2rem;            /* 32px */
+    }
+  }
+}

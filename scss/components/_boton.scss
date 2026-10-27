@@ -1,0 +1,35 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Botón */
+/* ========================================================== */
+.boton {
+  @include flex(row, center, center);
+  width: 100%;
+  max-width: 20rem;               /* 320px */
+  padding: 0.8rem $espacio-md;
+  border: 2px solid transparent;
+  border-radius: $radio;
+  font-size: 0.8125rem;
+  font-weight: $peso-negrita;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $color-blanco;
+
+  &--principal {
+    /* Verde: "Get started" */
+    @include boton-3d($color-verde, $color-verde-oscuro);
+  }
+
+  &--secundario {
+    /* Azul con borde: "I already have an account" */
+    @include boton-3d($color-azul, $color-azul-borde);
+    border-color: $color-azul-borde;
+  }
+
+  &--auto {
+    /* Botón más angosto (el del pie de página) */
+    width: auto;
+  }
+}

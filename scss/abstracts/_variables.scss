@@ -1,0 +1,39 @@
+// ==========================================================
+// Variables — valores sacados del diseño de Figma
+// ==========================================================
+
+// Colores
+$color-azul: #235390;          // fondo de cabecera, portada y pie
+$color-azul-oscuro: #0a4a82;   // barra de idiomas
+$color-azul-borde: #042c60;    // borde del botón secundario
+$color-celeste: #1cb0f6;       // enlaces
+$color-verde: #58cc02;         // botón principal
+$color-verde-oscuro: #58a700;  // sombra del botón principal
+$color-titulo: #3c3c3c;
+$color-texto: #777777;
+$color-gris-oscuro: #4b4b4b;
+$color-linea: #e5e5e5;
+$color-blanco: #ffffff;
+
+// Tipografía
+$fuente: 'Inter', Arial, sans-serif;
+$peso-medio: 500;
+$peso-negrita: 700;
+
+// Espaciados
+$espacio-xs: 0.5rem;   // 8px
+$espacio-sm: 1rem;     // 16px
+$espacio-md: 1.5rem;   // 24px
+$espacio-lg: 2.5rem;   // 40px
+$espacio-xl: 3rem;     // 48px
+$espacio-2xl: 5rem;    // 80px
+
+// Medidas
+$ancho-contenedor: 66.5rem;   // 1065px
+$radio: 1rem;                 // 16px (esquinas redondeadas)
+
+// Puntos de quiebre (primero móvil)
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1200px;

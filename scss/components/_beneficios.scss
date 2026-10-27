@@ -1,0 +1,55 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+/* ========================================================== */
+/* Componente: Beneficios ("Why you'll love learning...") */
+/* Desktop: 3 columnas con CSS Grid (beneficios | portátil | beneficios) */
+/* ========================================================== */
+.beneficios {
+  padding: $espacio-lg 0;
+  border-bottom: 2px solid $color-linea;
+
+  &__cuadricula {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: $espacio-lg;
+    margin-top: $espacio-lg;
+
+    @include mq($bp-lg) {
+      grid-template-columns: 1fr 15.3rem 1fr;
+      align-items: center;
+      gap: $espacio-xl;
+    }
+  }
+
+  &__columna {
+    @include flex(column, flex-start, stretch, $espacio-lg);
+    max-width: 22rem;
+  }
+
+  &__ilustracion {
+    width: 15.3rem;               /* 245px */
+  }
+}
+
+.beneficio {
+  @include flex(row, flex-start, flex-start, $espacio-sm);
+
+  &__icono {
+    width: 2.7rem;                /* 43px */
+    flex-shrink: 0;
+  }
+
+  &__titulo {
+    margin-bottom: 0.25rem;
+    font-size: 1.0625rem;
+    font-weight: $peso-negrita;
+    color: $color-titulo;
+  }
+
+  &__texto {
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+}
